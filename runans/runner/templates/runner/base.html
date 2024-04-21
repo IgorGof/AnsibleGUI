@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'runner/css/bootstrap.css' %}" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'runner/css/bootstrap.css' %}" rel="stylesheet" />
+<body>
+{% block mainmenu %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Панель навигации</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% for m in menu %}
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="#">{{m}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+        <button class="btn btn-outline-success" type="submit">Поиск</button>
+      </form>
+    </div>
+  </div>
+</nav>
+{% endblock mainmenu %}
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

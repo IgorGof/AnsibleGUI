@@ -1,0 +1,27 @@
+{% extends 'runner/base.html' %}
+
+{% block content %}
+<h2>{{title}}</h2>
+<p>Содержимое главной страницы</p>
+<div class="container">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>№ п/п</th>
+            <th>Имя хоста</th>
+            <th>IP адрес</th>
+            <th>Пользователь</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in arms %}
+        <tr>
+            <td>1</td>
+            <td>{{p.name}}</td>
+            <td>{{p.ip}}</td>
+            <td>{{p.user}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
