@@ -3,13 +3,26 @@ from django.http import HttpResponse
 
 from .models import *
 
-menu =["Хосты", "Задачи", "Расписания", "Войти"]
-def index(request):
-    arms = ARM.objects.all()
-    return render(request, 'runner/index.html', {'arms': arms, 'menu': menu, 'title': 'Главная страница'})
+menu =[{'title': "Хосты", 'url_name': 'arms'},
+        {'title': "Задачи", 'url_name': 'tasks'}, 
+        {'title': "Расписания", 'url_name': 'schedules'},
+        {'title': "Вход", 'url_name': 'login'}]
 
-def about(request):
-    return render(request, 'runner/about.html', {'menu': menu, 'title': 'О сайте'})
+def arms(request):
+    arms = ARM.objects.all()
+    context = {
+        'arms': arms,
+        'menu': menu,
+        'title': 'Главная страница'
+    }
+    return render(request, 'runner/index.html', context=context)
 
 def tasks(request):
-    return redirect('home', permanent=True) 
+    return HttpResponse("Задачи") 
+
+def schedules(request):
+    return HttpResponse("Расписания") 
+
+def login(request):
+    return HttpResponse("Авторизация") 
+
